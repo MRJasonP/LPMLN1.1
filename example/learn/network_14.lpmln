@@ -1,0 +1,29 @@
+node(1..10).
+session(1..4).
+#domain session(T).
+@getWeight fail(1, T).
+@getWeight fail(2, T).
+@getWeight fail(3, T).
+@getWeight fail(4, T).
+@getWeight fail(5, T).
+@getWeight fail(6, T).
+@getWeight fail(7, T).
+@getWeight fail(8, T).
+@getWeight fail(9, T).
+@getWeight fail(10, T).
+edge(1, 2).
+edge(1, 4).
+edge(2, 3).
+edge(4, 5).
+edge(4, 6).
+edge(3, 7).
+edge(6, 7).
+edge(5, 7).
+edge(3, 8).
+edge(6, 10).
+edge(5, 9).
+edge(1, 3).
+edge(2, 4).
+edge(3, 4).
+connected(X, Y, T) :- edge(X, Y), not fail(X, T), not fail(Y, T).
+connected(X, Y, T) :- connected(X, Z, T), connected(Z, Y, T).

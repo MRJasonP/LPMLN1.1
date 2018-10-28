@@ -1,0 +1,28 @@
+node(1..10).
+session(1..4).
+#domain session(T).
+2.19722457721526 fail(1,T).
+2.86960477322968 fail(2,T).
+2.88030272995723 fail(3,T).
+2.19722457721526 fail(4,T).
+2.88711663642525 fail(5,T).
+2.46135697503928 fail(6,T).
+2.51230556495029 fail(7,T).
+2.91896986412209 fail(8,T).
+2.88507177296554 fail(9,T).
+2.49725189329822 fail(10,T).
+
+edge(1, 2).
+edge(1, 4).
+edge(2, 3).
+edge(4, 5).
+edge(4, 6).
+edge(3, 7).
+edge(6, 7).
+edge(5, 7).
+edge(3, 8).
+edge(6, 10).
+edge(5, 9).
+
+connected(X, Y, T) :- edge(X, Y), not fail(X, T), not fail(Y, T).
+connected(X, Y, T) :- connected(X, Z, T), connected(Z, Y, T).

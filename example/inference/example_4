@@ -1,0 +1,21 @@
+step(0).
+step(1).
+boolean(t).
+boolean(f).
+next(0,1).
+-0.6931 pf(0).
+-0.6931 pf(1).
+p(t,T1) :- a(t,T) , next(T,T1) , pf(t,T) , p(f,T).
+p(t,T1) :- a(f,T) , next(T,T1) , p(t,T).
+p(f,T1) :- a(f,T) , next(T,T1) , p(f,T).
+p(B,0) :- p(B,0).
+a(B,T) :- a(B,T).
+p(t,T) :- not p(f,T), step(T).
+p(f,T) :- not p(t,T), step(T).
+:- p(t,T) , p(f,T).
+a(t,T) :- not a(f,T), step(T).
+a(f,T) :- not a(t,T), step(T).
+:- a(t,T) , a(f,T).
+p(B,T) :- p(B,T1) , p(B,T) , next(T1,T).
+p(f,0).
+a(t,0).
