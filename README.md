@@ -115,7 +115,7 @@ migratorybird(jo) :  0.314
 ```
 Again, due to the randomness of the sampling algorithm, the result is different to the exact inference result.
 
-If you want to change the number of samples, please to use '\[-samp SAMP\]' option. For example, `python main.py -i test/example_1 -q bird,residentbird,migratorybird -approximate -samp 10`, will generate 10 samples and infer the probability of queries based on these 10 samples.
+If you want to change the number of samples, please use '\[-samp SAMP\]' option. For example, `python main.py -i test/example_1 -q bird,residentbird,migratorybird -approximate -samp 10`, will generate 10 samples and infer the probability of queries based on these 10 samples.
 
 
 ### Learning Module
