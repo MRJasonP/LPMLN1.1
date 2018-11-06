@@ -42,7 +42,7 @@ bird(X) :- migratorybird(X).
 We have certain degree of confidence saying that 'jo' is a bird, and jo cannot be both resident bird and migratory bird; however; we are not sure that what kind of bird 'jo' belongs to. But we believe 'jo' is resident bird better than 'jo' is migratorybird. We will use this example to demonstrate our inference module.
 
 
-- MAP Inference
+- MAP Inference <br />
 The user can do the MAP inference by following command: `python main.py -i infer/example_1`
 And our program will generate the following output:
 ```
@@ -68,7 +68,7 @@ Time         : 0.001s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
 CPU Time     : 0.001s
 ```
 
-- Exact Inference 
+- Exact Inference  <br />
 The user can query the exact probability of atom predicates, such as the probability of 'jo' is a bird, 'jo' is a resident bird, and 'jo' is a migratory bird. By using this command line: `python main.py -i infer/example_1 -q bird, residentbird,migratorybird`. '-q', which is short for 'query', needs to be followed by at least one query predicate. 
 Here is the output our system generates:
 ```
@@ -82,8 +82,7 @@ migratorybird(jo) 0.24472847105479767
 residentbird(jo) 0.6652409557748219
 ```
 
-- Approximate Inference(Sampling Based Inference)
-
+- Approximate Inference(Sampling Based Inference) <br />
 In most of the cases, the answer set of a program is too large to enumerate all. As the result, we introduced a sampling algorithm by combining MCMC sampler + XOR constraint uniform sampler. Due to the randomness of the algorithm, the inferencing result may vary; however; it still keeps the property of the weighted atoms. 
 The user can run sampling-based inference by simply adding `-approximate` after the exact inferencing command, like this: `python main.py -i test/example_1 -q bird,residentbird,migratorybird -approximate`
 
@@ -119,7 +118,8 @@ If you want to change the number of samples, please use '\[-samp SAMP\]' option.
 
 
 ### Learning Module
--General LPMLN Weight Learning
+
+- General LPMLN Weight Learning <br />
 LPMLN weight learning is the newly implemented module in our system. It is able to learn the weight of rule by given set of facts which is represented in form of constraint. Consider this program:
 ```
 #domain num(X).
@@ -167,7 +167,7 @@ By default, LPMLN1.1 learning process will stop until 50 learning iterations rea
 Due to the randomness of the sampling algorithm, the learned weight at every time will be slightly different.
 
 
--Learning k-coherent program 
+- Learning k-coherent program  <br />
 According to (Lee and Wang 2018), A LPMLN program is k-coherent, if, for any truth assignment to atoms that occur in Π soft, there are exactly k probabilistic stable models of Π that satisfies the truth assignment.
 
 
