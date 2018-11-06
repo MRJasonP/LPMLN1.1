@@ -152,7 +152,7 @@ For the given domain, we observed that all predicates 'p' are true, all predicat
 For running learning module, the user is supposed to give both input program file and evidence(observation) file.
 User can use following command line to access the learning module:`python main.py -l test_learn/ach.lpmln -e test_learn/ach.evid`
 
-Here is the learned program
+Here is the learned program. The learned LPMLN program will be saved under the same directory of input LPMLN file, which is ended by extension ".weight".
 ```
 #domain num(X).
 num(1..3).
