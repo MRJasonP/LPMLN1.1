@@ -119,7 +119,7 @@ If you want to change the number of samples, please use '\[-samp SAMP\]' option.
 
 
 ### Learning Module
-- General LPMLN Weight Learning
+-General LPMLN Weight Learning
 LPMLN weight learning is the newly implemented module in our system. It is able to learn the weight of rule by given set of facts which is represented in form of constraint. Consider this program:
 ```
 #domain num(X).
@@ -167,7 +167,7 @@ By default, LPMLN1.1 learning process will stop until 50 learning iterations rea
 Due to the randomness of the sampling algorithm, the learned weight at every time will be slightly different.
 
 
-- Learning k-coherent program 
+-Learning k-coherent program 
 According to (Lee and Wang 2018), A LPMLN program is k-coherent, if, for any truth assignment to atoms that occur in Π soft, there are exactly k probabilistic stable models of Π that satisfies the truth assignment.
 
 
