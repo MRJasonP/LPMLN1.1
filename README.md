@@ -43,7 +43,7 @@ We have certain degree of confidence saying that 'jo' is a bird, and jo cannot b
 
 
 - MAP Inference <br />
-The user can do the MAP inference by following command: `python main.py -i infer/example_1`
+The user can do the MAP inference by following command: `python main.py -i example/inference/example_1`
 And our program will generate the following output:
 ```
 Second parser. Done!
@@ -69,7 +69,7 @@ CPU Time     : 0.001s
 ```
 
 - Exact Inference  <br />
-The user can query the exact probability of atom predicates, such as the probability of 'jo' is a bird, 'jo' is a resident bird, and 'jo' is a migratory bird. By using this command line: `python main.py -i infer/example_1 -q bird, residentbird,migratorybird`. '-q', which is short for 'query', needs to be followed by at least one query predicate. 
+The user can query the exact probability of atom predicates, such as the probability of 'jo' is a bird, 'jo' is a resident bird, and 'jo' is a migratory bird. By using this command line: `python main.py -i example/inference/example_1 -q bird, residentbird,migratorybird`. '-q', which is short for 'query', needs to be followed by at least one query predicate. 
 Here is the output our system generates:
 ```
 Second parser. Done!
@@ -84,7 +84,7 @@ residentbird(jo) 0.6652409557748219
 
 - Approximate Inference(Sampling Based Inference) <br />
 In most of the cases, the answer set of a program is too large to enumerate all. As the result, we introduced a sampling algorithm by combining MCMC sampler + XOR constraint uniform sampler. Due to the randomness of the algorithm, the inferencing result may vary; however; it still keeps the property of the weighted atoms. 
-The user can run sampling-based inference by simply adding `-approximate` after the exact inferencing command, like this: `python main.py -i test/example_1 -q bird,residentbird,migratorybird -approximate`
+The user can run sampling-based inference by simply adding `-approximate` after the exact inferencing command, like this: `python main.py -i example/inference/example_1 -q bird,residentbird,migratorybird -approximate`
 
 The program will start to gathering samples, by default, the program will gather 500 samples. Here is the shortcut for output:
 ```
@@ -114,7 +114,7 @@ migratorybird(jo) :  0.314
 ```
 Again, due to the randomness of the sampling algorithm, the result is different to the exact inference result.
 
-If you want to change the number of samples, please use '\[-samp SAMP\]' option. For example, `python main.py -i test/example_1 -q bird,residentbird,migratorybird -approximate -samp 10`, will generate 10 samples and infer the probability of queries based on these 10 samples.
+If you want to change the number of samples, please use '\[-samp SAMP\]' option. For example, `python main.py -i example/inference/example_1 -q bird,residentbird,migratorybird -approximate -samp 10`, will generate 10 samples and infer the probability of queries based on these 10 samples.
 
 
 ### Learning Module
@@ -150,7 +150,7 @@ and observation(Supervised-Dataset)
 LPMLN1.1 uses '@getWeight' as a placeholder to indicate which rules need to be learned.
 For the given domain, we observed that all predicates 'p' are true, all predicates 'q' are false, two 'z' predicates are true, and one is false. By using our intuition, we can roughly say that 'p' should get highest weight, 'q' should get lowest weight, and 'z' should get the weight somewhere in the middle.
 For running learning module, the user is supposed to give both input program file and evidence(observation) file.
-User can use following command line to access the learning module:`python main.py -l test_learn/ach.lpmln -e test_learn/ach.evid`
+User can use following command line to access the learning module:`python main.py -l example/learn/ach.lpmln -e test_learn/ach.evid`
 
 Here is the learned program. The learned LPMLN program will be saved under the same directory of input LPMLN file, which is ended by extension ".weight".
 ```
@@ -172,8 +172,8 @@ According to (Lee and Wang 2018), A LPMLN program is k-coherent, if, for any tru
 
 
 Due to the special property of the k-coherent program, depending on the observation is partial or full, LPMLN1.1 has developed an algorithm that can partially or completely bypass the sampling algorithm.
-Following command line is used to learn from k-coherent program with incomplete interpretation:`python main.py -ls test_learn/ach.lpmln -e test_learn/ach.evid`
-And this is used to learn from k-coherent program with complete interpretation:`python main.py -lsc test_learn/ach.lpmln -e test_learn/ach.evid`
+Following command line is used to learn from k-coherent program with incomplete interpretation:`python main.py -ls example/learn/ach.lpmln -e example/learn/ach.evid`
+And this is used to learn from k-coherent program with complete interpretation:`python main.py -lsc example/learn/ach.lpmln -e example/learn/ach.evid`
 
 In some cases, the learning algorithm for the k-coherent program is much more efficient than general learning algorithm.
 
